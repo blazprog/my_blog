@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <form method="POST" class="post-form" action="{% url 'comment_edit' pk=post.id %}">
+        {% csrf_token %}
+        <div class="column is-9 is-offset-2">
+            <div class="card article">
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-content has-text-centered">
+                            {{ post.title }}
+                        </div>
+                    </div>
+                    <div class="content article-body is-size-5">
+                        <button type="submit" class="button mt-3 mb-3 is-info">Сохранит</button>
+                        <p>{{ form.comment | safe }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

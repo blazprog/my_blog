@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="column is-6 is-offset-3">
+        <div class="card article">
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content has-text-centered">
+                        <p class="title article-title is-warning">Имя и пароль пользователя</p>
+                    </div>
+                </div>
+                <div class="content article-body is-size-5">
+                    <div class="container">
+                        <form method="POST" class="login-form", action=".">
+                            {% csrf_token %}
+                             <input type="hidden" name="next" value="{{ next }}" />
+                            <div class="card-content is-center">
+                                <div class="content article-body is-size-5 has-text-centered">
+                                    <div class="field">
+                                        <label class="label is-medium">Имя</label>
+                                        <div class="control">
+                                            {{ form.username }}
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <label class="label is-medium">Пароль</label>
+                                        <div class="control">
+                                            {{ form.password }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <footer class="card-footer">
+                                <div class="card-footer-item">
+                                    <button type="submit" class="button mt-3 mb-3">Вход</button>
+                                </div>
+                            </footer>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

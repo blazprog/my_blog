@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        {%  for post in posts %}
+            <div class="box">
+                <arcticle class="media">
+                    <figure class="media-left">
+                        <p class="image is-128x128">
+                            {% if post.image %}
+                                <img src="{{ post.image.url }}" alt="">
+                            {% endif %}
+                        </p>
+                    </figure>
+                    <div class="media-content">
+                        <div class="content">
+                                <strong>
+                                    <a href="{% url 'post_detail' pk=post.pk %}">
+                                        {{ post.title }}
+                                    </a>
+                                </strong>
+                                <div class="comment">
+                                    {{ post.text | safe }}
+                                </div>
+                        </div>
+                    </div>
+                </arcticle>
+            </div>
+        {%  endfor %}
+    </div>
+{% endblock %}
+

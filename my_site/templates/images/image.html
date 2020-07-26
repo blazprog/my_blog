@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+<div class="columns">
+    <div class="column is-1"></div>
+    <div class="column is-10">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-header-title">
+                    {{ image.title }}
+                </div>
+            </div>
+            <div class="card-image">
+                <img src="{{ image.image.url }}"/>
+            </div>
+            <div class="content">
+                <p>{{ image.text }}
+            </div>
+        </div>
+        <footer class="card-footer">
+            <a href="#" class="card-footer-item">Прежняя</a>
+            <a href="#" class="card-footer-item">Следующая</a>
+        </footer>
+    </div>
+    <div class="column is-1"></div>
+</div>
+</div>
+{% endblock %}

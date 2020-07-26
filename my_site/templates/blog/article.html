@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+            <div class="column is-9 is-offset-2">
+                <div class="card article">
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-content has-text-centered">
+                                <p class="title article-title">{{ post.title }}</p>
+                                {% if request.user.is_authenticated %}
+                                    <a href="{% url 'post_edit' pk=post.pk %}">Редактировать</a>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                        <div class="content article-body is-size-5">
+                            <div class="container">
+                                {{ post.text | safe }}
+                            </div>
+                        </div>
+                    </div>
+                    <footer class="card-footer">
+                       <ul class="ml-3 mt-3">
+                            {% for comment in comments %}
+                                <li class="mb-3">
+                                    {{ comment.body | linebreaks }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </footer>
+                </div>
+            </div>
+
+            <div class="column is-9 is-offset-2">
+                <form method="POST" action="{% url 'post_detail' pk=post.pk %}">
+                    {% csrf_token %}
+                    <div class="card-content">
+                        <div class="content article-body is-size-5">
+                            <p>{{ comment_form.body | safe }}</p>
+                        </div>
+                    </div>
+                    <div class="card-footer-item">
+                        <button type="submit" class="button mt-3 mb-3">Добавить коментар</button>
+                    </div>
+                </form>
+            </div>
+    </div>
+{% endblock %}
