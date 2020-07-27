@@ -19,8 +19,8 @@
             </div>
         </div>
         <footer class="card-footer">
-            <a href="#" class="card-footer-item">Прежняя</a>
-            <a href="#" class="card-footer-item">Следующая</a>
+            <a href="{% url 'image_previous' pk=image.pk %}" class="card-footer-item">Предидущая</a>
+            <a href="{% url 'image_next' pk=image.pk %}" class="card-footer-item">Следующая</a>
         </footer>
     </div>
     <div class="column is-1"></div>
